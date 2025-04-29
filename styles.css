@@ -1,0 +1,230 @@
+/* GLOBAL */
+*
+{
+    font-family: 'Georgia', Times, serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+html {
+    background: #fff;
+    color: #05345C;
+}
+
+h1, h2, h3 {
+    font-weight: lighter;
+}
+
+h1 {
+    font-size: 3.5rem;
+    letter-spacing: 0.1rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 20px;
+}
+
+a {
+    color: #fff;
+}
+
+a:visited{
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-color: #ED2D24;
+    text-decoration-thickness: 3px;
+}
+
+ul {
+    list-style: none;
+}
+
+.container  {
+    max-width: 1600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0px 20px;
+}
+
+.btn { 
+    display: inline-block;
+    width: fit-content;
+    padding: 16px;
+    font-size: 22px;
+    border: 3px solid #A58A4B;
+    border-radius: 5px;
+    background: #05345C;
+    color: #fff;
+    transition: 0.4s;
+}
+
+a.btn {
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #A58A4B;
+    border: 3px solid #05345C;
+}
+
+/* HEADER/NAV */
+nav {
+    background: #05345C;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+nav img {    /* UoC logo */
+    margin-right: auto;
+}
+
+nav ul {
+    display: flex;
+    margin-left: auto;
+    margin-right: 5%;
+    gap: 40px;
+    color: #fff;
+}
+
+nav a {
+    font-size: 2rem;
+}
+
+header {
+    background: #5973AA;
+    color: #fff;
+    display: flex;
+    margin-right: auto;
+    margin-left: 25px;
+    margin-bottom: 50px;
+    padding: 15px;
+    border-bottom: 3px solid #A58A4B;
+    border-left: 3px solid #A58A4B;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 40px;
+    border-bottom: 3px solid #A58A4B;
+    border-top: 3px solid #A58A4B;
+    background-color: #f0f4f8;
+}
+
+.hero aside {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #05345C;
+    border: 3px solid #A58A4B;
+    border-radius: 10px;
+}
+
+.hero aside img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.hero-txt {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+}
+
+/* CARDS */
+.cards-title {
+    margin: 2rem 0;
+    align-items: left;
+}
+
+.info-cards {
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 30px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.info-card {
+    background: #05345C;
+    box-sizing: border-box;
+    padding: 50px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    border: 3px solid #A58A4B;
+}
+
+.card-title {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    column-gap: 30px;
+    margin-bottom: 30px;
+}
+
+.card-info p {
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+
+
+/* ADD MEDIA QUERIES */
+
+/* OLD STYLING */
+/* .header h1
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.header nav
+{
+    display: flex;
+}
+
+.header nav ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+    display: flex;
+}
+
+.header nav a
+{
+    text-decoration: none;
+    color: orange;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.header nav a:hover
+{
+    color: orangered;
+    border-bottom: 2px solid;
+}
