@@ -8,61 +8,119 @@
     <title>Details | Binks Building</title>
 </head>
 
-<body>
+<body class="details">
     <!-- Header/Nav -->
-    <nav>
-        <a href="https://www.chester.ac.uk/" target="_blank"><img src="./img/university-logo.png" alt="University of Chester logo" width="150px", height="auto"></a>  
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="details.html">Details</a></li>
-            <li><a href="accessibility.html">Accessibility</a></li>
-        </ul>
-    </nav>
     <header>
-        <h2>DETAILS</h2>    
-    </header>
-
+        <nav>
+            <div class="university-link">
+                <a href="index.html"><img src="./img/university-logo.png" alt="University of Chester logo" width="150" height="48"></a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="details.html">Details</a></li>
+                <li><a href="accessibility.html">Accessibility</a></li>
+            </ul>
+        </nav>
+    </header> 
 
     <!-- main -->
-    <main class="mwidth">
-        <section class="details">
-            <div class="box">
-                <h2>Rooms in Binks</h2>
-                <table>
-                    <tr>
-                        <th>Room</th>
-                        <th>Location</th>
-                        <th>Purpose</th>
-                    </tr>
-                    <tr>
-                        <td>Room x</td>
-                        <td>Floor x</td>
-                        <td>[purpose]</td>
-                    </tr>
-                    <tr>
-                        <td>Room y</td>
-                        <td>Floor x</td>
-                        <td>[purpose]</td>
-                    </tr>
-                    <tr>
-                        <td>Room z</td>
-                        <td>Floor y</td>
-                        <td>[purpose]</td>
-                    </tr>
-                </table>
+    <main>
+        <h1>Binks Building | Details</h1>
+        <!--separate these into equal panels -->
+        <section class="panel-grid">
+            <div class="panel img-panel">
+                <div class="img-grid">
+                    <figure>
+                        <img src="./img/binks-lecture.jpeg" alt="Lecture hall CBK011 in the Binks Building." height="250" width="250">
+                        <figcaption>Lecture hall CBK011</figcaption>
+                    </figure>
+                    <figure>    
+                        <img src="./img/binks-caf-2.jpeg" alt="Cafeteria inside the Binks Building." height="250" width="250">
+                        <figcaption>Cafeteria</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="./img/binks-info-points.jpeg" alt="Student information points inside Binks." height="250" width="250">
+                        <figcaption>Student information point</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="./img/binks-student-services.jpeg" alt="Student services in the Binks building." height="250" width="250">
+                        <figcaption>Student services CBK116</figcaption>
+                    </figure>
+                </div>
+            </div>
+            
+            <div class="panel table-panel">
+                <div class="table-container">
+                    <table>
+                        <caption>Rooms in the Binks Building with their locations, room code, and description.</caption>
+                        <thead>
+                            <tr>
+                                <th>Room</th>
+                                <th>Location</th>
+                                <th>Room Code</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lecture hall</td>
+                                <td>Ground floor</td>
+                                <td>CBK011</td>
+                                <td>A large multi-purpose lecture hall at the back of the building, used by various departments.</td>
+                            </tr>
+                            <tr>
+                                <td>Cafeteria</td>
+                                <td>Ground Floor</td>
+                                <td>N/A</td>
+                                <td>A cafeteria for students and staff, with a food counter as well as microwaves and a seating area.</td>
+                            </tr>
+                            <tr>
+                                <td>Info Point</td>
+                                <td>Ground Floor</td>
+                                <td>CBK005</td>
+                                <td>A help point for students with any general queries.</td>
+                            </tr>
+                            <tr>
+                                <td>Student Services</td>
+                                <td>First Floor</td>
+                                <td>CBK116</td>
+                                <td>A department centered around helping students academically and professionaly.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="panel distances-panel">
+                <article class="building-distances">
+                    <img src="./img/direction.svg" alt="Distance icon" width="200" height="200">
+                <h2>Closest buildings to Binks</h2>
+                <ol>
+                    <li>Chaplaincy: 10m</li>
+                    <li>Catherine House: 10m</li>
+                    <li>Alexandra House: 12m</li>
+                    <li>Margaret House: 12m</li>
+                </ol>
+                </article>
+            </div>
+
+            <div class="panel weather-panel">
+                <div class="weather-container">
+                    <img src="./img/sky.svg" alt="Weather icon" width="200" height="200">
+                    <h3>Current weather in Chester</h3>
+                    <div id="weather"></div><br>
+                    <p>Sourced from: <a href="https://weatherstack.com" target="_blank">https://weatherstack.com/</a></p>
+                </div>
             </div>
         </section>
     </main>
 
-
-    <h2>Closest buildings to Binks</h2>
-    <ol>
-        <li>Seaborne Library</li>
-        <li>Building 2</li>
-        <li>Building 3</li>
-        <li>Building 4</li>
-        <li>Building 5</li>
-    </ol>
-
+    <footer>
+        <p>Standards source: <cite><a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank">WCAG 2.2</a></cite></p>
+        <p>Josh Birch <time datetime="30-04-2025">30/04/25</time></p>
+        <p><a href="https://chester.ac.uk/" target="_blank">University of Chester</a></p>
+    </footer>
+    
+<script src="weather.js"></script>
 </body>
 </html>
