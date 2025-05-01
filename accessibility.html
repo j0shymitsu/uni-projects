@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <title>Accessibility | Binks Building</title>
 </head>
 
@@ -13,7 +13,7 @@
     <header>
         <nav>
             <div class="university-link">
-                <a href="index.html"><img src="./img/university-logo.png" alt="University of Chester logo" width="150"></a>
+                <a href="index.html"><img src="./img/university-logo.png" alt="University of Chester logo" width="150" height="48"></a>
             </div>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -23,8 +23,8 @@
         </nav>
     </header> 
 
-    <main>
-        <h1>Binks Building | Accessibility</h1>
+    <main aria-labelledby="accessibility-page">
+        <h1 id="accessibility-page">Binks Building | Accessibility</h1>
         <section>
             <h2><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2 Compliance</h2>
             <p>This site conforms to WCAG 2.2 A and AA criteria. Below are some specific requirements for each principle at every level, and how they apply to this website. Level AAA was not fully attempted due to practability:</p>
@@ -74,7 +74,7 @@
     </main>
     <footer>
         <p>Standards source: <cite><a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank">WCAG 2.2</a></cite></p>
-        <p>Josh Birch <time datetime="30-04-2025">30/04/25</time></p>
+        <p>Josh Birch <time datetime="2025-04-30">30/04/25</time></p>
         <p><a href="https://chester.ac.uk/" target="_blank">University of Chester</a></p>
     </footer>
 </body>
