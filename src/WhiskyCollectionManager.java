@@ -1,80 +1,76 @@
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class WhiskyCollection
+public class WhiskyCollectionManager
 {
-    static Scanner inputScanner = new Scanner(System.in);
-
-    public static void main(String[] args)
+    private ArrayList<Whisky> whiskies;
+    public WhiskyCollectionManager()
     {
-        ArrayList<Whisky> whiskies = new ArrayList<>();
-
-        while (true)
-        {
-            System.out.println("Would you like to enter a new whisky into your collection? " +
-                    "\n[Type 'exit' to quit; hit enter or type anything else to continue.]");
-
-            String exit = inputScanner.nextLine();
-            exit = exit.toUpperCase();
-
-            if (!exit.equals("EXIT"))
-            {
-                System.out.println("\nRegion: ");
-                String region = inputScanner.nextLine();
-
-                System.out.println("Distillery: ");
-                String distillery = inputScanner.nextLine();
-
-                System.out.println("Expression (optional):");
-                String expression = inputScanner.nextLine();
-
-                    if (expression.isBlank())
-                    {
-                        expression = null;
-                    }
-                    else
-                    {
-                        expression = expression;
-                    }
-
-                System.out.println("Age: ");
-                int age = inputScanner.nextInt();
-
-                Whisky nextWhisky = new Whisky(region, distillery, expression, age);
-                whiskies.add(nextWhisky);
-                System.out.println("Added: " + nextWhisky);
-
-                System.out.println("\nWhiskies now in database: ");
-
-                for (Whisky whiskey : whiskies)
-                {
-                    System.out.println(whiskey);
-                }
-            }
-
-            // logic for editing/deleting from collection
-        }
+        this.whiskies = loadWhiskies();
     }
 
-    private static void writeToFile(ArrayList<String> whiskies)
+    public ArrayList<Whisky> loadWhiskies()
     {
-        Path location = Paths.get("resources/whiskycollection.txt");
-        Charset utf8 = StandardCharsets.UTF_8;
-
         try
         {
-            Files.write(location, whiskies, utf8, StandardOpenOption.APPEND);
+            FileInputStream fileInputStream = new FileInputStream("resources/whiskycollection.dat");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            ArrayList<Whisky> whiskies = (ArrayList<Whisky>) objectInputStream.readObject();
+            return whiskies;
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("File not found: " + e.getMessage());
         }
         catch (IOException e)
         {
-            System.out.println("File could not be saved!");
+            System.out.println("Error converting data to object: " + e.getMessage());
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println("Can't find class representing saved object: " + e.getMessage());
+        }
+
+        return new ArrayList<>();
+    }
+
+    public void saveWhiskies(ArrayList<Whisky> whiskies)
+    {
+        try
+        {
+            FileOutputStream fileOutputStream = new FileOutputStream("resources/whiskycollection.dat");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(whiskies);
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Unable to save: " + e.getMessage());
+        }
+        catch (IOException e)
+        {
+            System.out.println("Unable to create object output stream: " + e.getMessage());
+        }
+    }
+
+    public void addWhisky(Whisky whisky)
+    {
+        whiskies.add(whisky);
+        saveWhiskies(whiskies);
+    }
+
+    public void listWhiskies()
+    {
+        if (whiskies.isEmpty())
+        {
+            System.out.println("No whiskies in the collection");
+        }
+        else
+        {
+            for (Whisky whisky : whiskies)
+            {
+                System.out.println(whisky);
+            }
         }
     }
 }
