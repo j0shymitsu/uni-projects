@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+#include <vector>
+#include <array>
 //#define ASSIGNMENT_2		//Uncomment to switch to feedback mode for assignment 2
 
 /*
@@ -12,7 +15,13 @@
 
 class Prototype
 {
-    //insert data structures here...
-public:
-    //methods here...
+    public:
+        Prototype(std::string& file_name);
+        std::string getCity(char& start_letter);
+        bool checkCity(std::string& city);          // Checks if valid
+        void markUsed(std::string& city);
+        void restart();
+    private:
+        std::vector<std::string> all_cities;
+        std::vector<std::string> used_cities;
 };
