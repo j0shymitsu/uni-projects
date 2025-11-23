@@ -20,7 +20,7 @@ class Prototype
         std::string getCity(char& start_letter);
         bool checkCity(std::string& city);          // Checks if valid
         void markUsed(std::string& city);
-        void restart();
+        static void restart();
     private:
         std::vector<std::string> all_cities;
         std::vector<std::string> used_cities;
