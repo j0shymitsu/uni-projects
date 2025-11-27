@@ -60,6 +60,11 @@ string Prototype::getCity(char start_letter)
         }
     }
 
+    if (valid_cities.empty())
+    {
+        return "";
+    }
+
     // Return random city from valid cities
     int random_index = rand() % valid_cities.size();
     return valid_cities[random_index];
