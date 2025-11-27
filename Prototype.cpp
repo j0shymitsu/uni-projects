@@ -72,11 +72,11 @@ bool Prototype::checkCity(std::string city)
     {
         if (city == all_cities[i])
         {
-            return false;
+            return true;
         }
     }
 
-    return true;
+    return false;
 }
 
 // Mark given city as used
