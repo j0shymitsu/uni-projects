@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Accessibility | Binks Building</title>
+</head>
+
+<body class="accessibility">
+    <!-- Header/nav-->
+    <header>
+        <nav>
+            <div class="university-link">
+                <a href="index.html"><img src="./img/university-logo.png" alt="University of Chester logo" width="150" height="48"></a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="details.html">Details</a></li>
+                <li><a href="accessibility.html">Accessibility</a></li>
+            </ul>
+        </nav>
+    </header> 
+
+    <main aria-labelledby="accessibility-page">
+        <h1 id="accessibility-page">Binks Building | Accessibility</h1>
+        <section>
+            <h2><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2 Compliance</h2>
+            <p>This site conforms to WCAG 2.2 A and AA criteria. Below are some specific requirements for each principle at every level, and how they apply to this website. Level AAA was not fully attempted due to practability:</p>
+
+            <h3>Level: A</h3>
+            <dl>
+                <dt>1.1.1 Non-text Content</dt>
+                <dd><strong>Met</strong> - All non-text content that is presented provides alternative text.</dd>
+
+                <dt>2.1.1 Keyboard</dt>
+                <dd><strong>Met</strong> - All functionality on this website is operable through a keyboard interface without requiring specific timings for individual keystrokes.</dd>
+
+                <dt>3.3.2 Labels or instructions</dt>
+                <dd><strong>Met</strong> - The site contains no user-input controls.</dd>
+
+                <dt>4.1.2 Name, Role, Value</dt>
+                <dd><strong>Not Applicable</strong> - There are no user interace components that need to be programmatically determined.</dd>
+            </dl>
+            <br>
+            <h3>Level: AA</h3>
+            <dl>
+                <dt>1.3.1 Info and Relationship</dt>
+                <dd><strong>Met</strong> - Information, structure, and relationships conveyed through presentation are programatically determined.</dd>
+                
+                <dt>2.4.5 Multiple Ways</dt>
+                <dd><strong>Met</strong> - There is more than one way to locate each web page within the set of pages (except where the page is a step within a wider process).</dd>
+                
+                <dt>3.1.2 Language of Parts</dt>
+                <dd><strong>Met</strong> - The language of each passage in context is programmatically determined (except for proper nouns and technical terms).</dd>
+                
+                <dt>4.1.3 Status Messages</dt>
+                <dd><strong>Not Applicable</strong> - This site contains no dynamic status messages that would need to be announced to assistive technologies.</dd>
+            </dl>
+            <br>
+            <h3>Level: AAA</h3>
+            <dl>
+                <dt>1.2.8 Media Alternative (Prerecorded)</dt>
+                <dd><strong>Not Applicable</strong> - There is no time-based media on the website, and therefore no alternative is provided.</dd>
+                
+                <dt>2.1.3 Keyboard (No Exception)</dt>
+                <dd><strong>Met</strong> - All functionality of the website content is operable through a keyboard interface without requiring specific timings for individual keystrokes.</dd>
+                
+                <dt>3.1.5 Reading Level</dt>
+                <dd><strong>Not Met</strong> - There is no alternative version of the text available of lower secondary education level, although the original text may already conform to this standard.</dd>
+            </dl>
+        </section>
+    </main>
+    <footer>
+        <p>Standards source: <cite><a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank">WCAG 2.2</a></cite></p>
+        <p>Josh Birch <time datetime="2025-04-30">30/04/25</time></p>
+        <p><a href="https://chester.ac.uk/" target="_blank">University of Chester</a></p>
+    </footer>
+</body>
+</html>

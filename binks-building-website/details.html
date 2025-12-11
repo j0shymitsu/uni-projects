@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Details | Binks Building</title>
+</head>
+
+<body class="details">
+    <!-- Header/Nav -->
+    <header>
+        <nav>
+            <div class="university-link">
+                <a href="index.html"><img src="./img/university-logo.png" alt="University of Chester logo" width="150" height="48"></a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="details.html">Details</a></li>
+                <li><a href="accessibility.html">Accessibility</a></li>
+            </ul>
+        </nav>
+    </header> 
+
+    <!-- main -->
+    <main aria-labelledby="details-page">
+        <h1 id="details-page">Binks Building | Details</h1>
+        <!--separate these into equal panels -->
+        <section class="panel-grid">
+            <div class="gallery">
+                <figure>
+                    <img src="./img/binks-lecture.jpeg" alt="Lecture hall CBK011 in the Binks Building." height="250" width="250">
+                    <figcaption>Lecture hall CBK011</figcaption>
+                </figure>
+                <figure>    
+                    <img src="./img/binks-caf-2.jpeg" alt="Cafeteria inside the Binks Building." height="250" width="250">
+                    <figcaption>Cafeteria</figcaption>
+                </figure>
+                <figure>
+                    <img src="./img/binks-info-points.jpeg" alt="Student information points inside Binks." height="250" width="250">
+                    <figcaption>Student information point</figcaption>
+                </figure>
+                <figure>
+                    <img src="./img/binks-student-services.jpeg" alt="Student services in the Binks building." height="250" width="250">
+                    <figcaption>Student services CBK116</figcaption>
+                </figure>
+            </div>
+                
+            <table class="details-table">
+                <caption>Rooms in the Binks Building with their locations, room code, and description.</caption>
+                <thead>
+                    <tr>
+                        <th>Room</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lecture hall</td>
+                        <td>Ground floor<br><small>CBK011</small></td>
+                        <td>A large multi-purpose lecture hall at the back of the building, used by various departments.</td>
+                    </tr>
+                    <tr>
+                        <td>Cafeteria</td>
+                        <td>Ground Floor<br><small>N/A</small></td>
+                        <td>A cafeteria for students and staff, with a food counter as well as microwaves and a seating area.</td>
+                    </tr>
+                    <tr>
+                        <td>Info Point</td>
+                        <td>Ground Floor<br><small>CBK005</small></td>
+                        <td>A help point for students with any general queries.</td>
+                    </tr>
+                    <tr>
+                        <td>Student Services</td>
+                        <td>First Floor<br><small>CBK116</small></td>
+                        <td>A department centered around helping students academically and professionaly.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <article class="nearby">
+
+                <h2>Closest buildings to Binks</h2>
+                <ol>
+                    <li><strong>Chaplaincy: </strong><small>10m</small></li>
+                    <li><strong>Catherine House: </strong><small>10m</small></li>
+                    <li><strong>Alexandra House: </strong><small>12m</small></li>
+                    <li><strong>Margaret House: </strong><small>12m</small></li>
+                </ol>
+            </article>
+
+            <div class="weather">
+                <img src="./img/weather-forecast.svg" alt="Weather icon" height="150" width="150">
+                <h2>Current weather in Chester</h2>
+                <div id="weather"></div><br>
+                <p class="source">Sourced from: <a href="https://weatherstack.com" target="_blank">https://weatherstack.com/</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Standards source: <cite><a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank">WCAG 2.2</a></cite></p>
+        <p>Josh Birch <time datetime="30-04-2025">30/04/25</time></p>
+        <p><a href="https://chester.ac.uk/" target="_blank">University of Chester</a></p>
+    </footer>
+    
+<script src="js/weather.js"></script>
+</body>
+</html>
