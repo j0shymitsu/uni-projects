@@ -4,17 +4,18 @@
 #include <random>
 using namespace std;
 
-vector<string> Simulator::run(string file_name, char start_letter, int seed)
+// Fully qualified method to resolve compatible declaration error; still not working!
+std::vector<std::string> Simulator::run(std::string file_name, char start_letter, int seed)
 {
     Prototype prototype(file_name);
     prototype.seed(seed);
 
-    vector<string> all_cities;
+    std::vector<string> all_cities;
     char current_letter = start_letter;
 
     while (true)
     {
-        string city = prototype.getCity(current_letter);
+        std::string city = prototype.getCity(current_letter);
 
         if (city.empty())
         {
@@ -33,13 +34,17 @@ vector<string> Simulator::run(string file_name, char start_letter, int seed)
 double Simulator::batch(string filename, int k, int seed)
 {
     double batch_time = 0.0;
+    mt19937 rng(seed);
+    uniform_int_distribution<char> letters('a', 'z');
 
     // Timer start
     auto start = chrono::high_resolution_clock::now();
 
     for (int i = 1; i <= k; i++)
     {
-        run(filename, 'a', seed);
+        char start_letter = letters(rng);
+        int current_seed = seed + i;
+        run(filename, start_letter, current_seed);
     }
 
     // Timer stop
