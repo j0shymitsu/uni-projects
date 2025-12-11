@@ -1,5 +1,6 @@
 #include "Simulator.h"
 #include "Prototype.h"
+#include <chrono>
 using namespace std;
 
 vector<string> Simulator::run(string file_name, char start_letter, int seed)
@@ -24,13 +25,29 @@ vector<string> Simulator::run(string file_name, char start_letter, int seed)
         current_letter = city.back();   // Make sure next word starts with last letter from previous
     }
 
+    all_results.push_back(all_cities);
     return all_cities;
 }
 
 // TODO
 double Simulator::batch(string filename, int k, int seed)
 {
-    return 0.0;
+    double batch_time = 0.0;
+
+    // Timer start
+    auto start = chrono::high_resolution_clock::now();
+
+    for (int i = 1; i <= k; i++)
+    {
+        Simulator::run(filename, 'a', seed);
+    }
+
+    // Timer stop
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
+    batch_time += duration.count();
+
+    return batch_time;
 }
 
 vector<list<string>> Simulator::getResults()

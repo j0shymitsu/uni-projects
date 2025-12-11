@@ -5,5 +5,6 @@
 
 class Competition : public Prototype
 {
-
+    public:
+        Competition() : Prototype("Cities.txt") {};
 };
