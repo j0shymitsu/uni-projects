@@ -29,7 +29,6 @@ vector<string> Simulator::run(string file_name, char start_letter, int seed)
     return all_cities;
 }
 
-// TODO
 double Simulator::batch(string filename, int k, int seed)
 {
     double batch_time = 0.0;
@@ -52,6 +51,14 @@ double Simulator::batch(string filename, int k, int seed)
 
 vector<list<string>> Simulator::getResults()
 {
+    vector<list<string>> all_results;
+    all_results.reserve(all_results.size());
+
+    for (auto result : all_results)
+    {
+        all_results.push_back(result);
+    }
+
     return all_results;
 }
 
