@@ -1,6 +1,7 @@
 #include "Simulator.h"
 #include "Prototype.h"
 #include <chrono>
+#include <random>
 using namespace std;
 
 vector<string> Simulator::run(string file_name, char start_letter, int seed)
@@ -38,7 +39,7 @@ double Simulator::batch(string filename, int k, int seed)
 
     for (int i = 1; i <= k; i++)
     {
-        Simulator::run(filename, 'a', seed);
+        run(filename, 'a', seed);
     }
 
     // Timer stop
@@ -51,14 +52,14 @@ double Simulator::batch(string filename, int k, int seed)
 
 vector<list<string>> Simulator::getResults()
 {
-    vector<list<string>> all_results;
-    all_results.reserve(all_results.size());
+    vector<list<string>> output;
+    output.reserve(all_results.size());
 
-    for (auto result : all_results)
+    for (auto result : output)
     {
-        all_results.push_back(result);
+        output.emplace_back(result.begin(), result.end());
     }
 
-    return all_results;
+    return output;
 }
 
