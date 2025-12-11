@@ -3,7 +3,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <cstdlib>
 using namespace std;
 
 // Init
@@ -65,9 +64,11 @@ string Prototype::getCity(char start_letter)
         return "";
     }
 
-    // Return random city from valid cities
-    int random_index = rand() % valid_cities.size();
-    return valid_cities[random_index];
+    // Return random city from valid cities: Updated using new seed method and uniform distribution
+    uniform_int_distribution<int> dist(0, valid_cities.size() - 1);
+    int index = dist(rng);
+
+    return valid_cities[index];
 }
 
 // Check if given city is valid and unused
@@ -106,3 +107,11 @@ void Prototype::restart()
 {
     used_cities = vector<string>();
 }
+
+// Seeding method
+void Prototype::seed(int value)
+{
+    rng.seed(value);
+}
+
+
