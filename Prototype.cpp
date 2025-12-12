@@ -11,18 +11,27 @@ Prototype::Prototype(std::string file_name)
     ifstream reader(file_name);
 
     string city;
-    all_cities = vector<string>();
-    used_cities = vector<string>();
+    all_cities.clear();
+    used_cities.clear();
 
     if (!reader)
     {
         cout << "Error opening file." << '\n';
+        return;
     }
 
-    for (int i = 0; !reader.eof(); i++)
+    // for (int i = 0; !reader.eof(); i++)
+    // {
+    //     getline(reader, city);
+    //     all_cities.push_back(city);
+    // }
+
+    while (getline(reader, city))
     {
-        getline(reader, city);
-        all_cities.push_back(city);
+        if (!city.empty())
+        {
+            all_cities.push_back(city);
+        }
     }
 
     reader.close();
