@@ -12,5 +12,5 @@ class Simulator
         double batch(std::string file_name, int k, int seed);   // Run k sims, return time taken in s
         std::vector<std::list<std::string>> getResults();
     private:
-        std::vector<std::vector<std::string>> all_results;
+        std::vector<std::list<std::string>> all_results;
 };
