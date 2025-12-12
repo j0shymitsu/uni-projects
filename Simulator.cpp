@@ -34,7 +34,6 @@ vector<string> Simulator::run(string file_name, char start_letter, int seed)
 
 double Simulator::batch(string file_name, int k, int seed)
 {
-    double batch_time = 0.0;
     mt19937 rng(seed);
     uniform_int_distribution<char> letters('a', 'z');
 
@@ -50,10 +49,9 @@ double Simulator::batch(string file_name, int k, int seed)
 
     // Timer stop
     auto stop = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
-    batch_time += duration.count() / 1000.0;    // converts to ms
+    chrono::duration<double> duration = stop - start;
 
-    return batch_time;
+    return duration.count();
 }
 
 vector<list<string>> Simulator::getResults()
