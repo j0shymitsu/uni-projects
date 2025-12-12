@@ -4,6 +4,9 @@
 #include <random>
 using namespace std;
 
+Simulator::Simulator()
+    : rng(0), letters('a', 'z') {}
+
 vector<string> Simulator::run(string file_name, char start_letter, int seed)
 {
     Prototype prototype(file_name);
@@ -33,11 +36,10 @@ vector<string> Simulator::run(string file_name, char start_letter, int seed)
 
 double Simulator::batch(string file_name, int k, int seed)
 {
-    mt19937 rng(seed);
-    uniform_int_distribution<char> letters('a', 'z');
+    rng.seed(seed);
 
     // Timer start
-    auto start = chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 
     for (int i = 1; i <= k; i++)
     {
@@ -48,9 +50,9 @@ double Simulator::batch(string file_name, int k, int seed)
 
     // Timer stop
     auto stop = chrono::high_resolution_clock::now();
-    chrono::duration<double> duration = stop - start;
+    chrono::duration<double> time_elapsed = stop - start;   // secs
 
-    return duration.count();
+    return time_elapsed.count();                                 // secs as double
 }
 
 vector<list<string>> Simulator::getResults()
