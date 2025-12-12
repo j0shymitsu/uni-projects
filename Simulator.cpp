@@ -4,7 +4,6 @@
 #include <random>
 using namespace std;
 
-// Fully qualified method to resolve compatible declaration error; still not working!
 vector<string> Simulator::run(string file_name, char start_letter, int seed)
 {
     Prototype prototype(file_name);
@@ -24,7 +23,7 @@ vector<string> Simulator::run(string file_name, char start_letter, int seed)
 
         prototype.markUsed(city);
         all_cities.push_back(city);
-        current_letter = city.back();   // Make sure next word starts with last letter from previous
+        current_letter = city.back();
     }
 
     all_results.push_back(list<string>(all_cities.begin(), all_cities.end()));
