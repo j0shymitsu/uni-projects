@@ -51,7 +51,7 @@ double Simulator::batch(string file_name, int k, int seed)
     // Timer stop
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
-    batch_time += duration.count();
+    batch_time += duration.count() / 1000.0;    // converts to ms
 
     return batch_time;
 }
