@@ -45,14 +45,14 @@ double Simulator::batch(string file_name, int k, int seed)
     for (int i = 1; i <= k; i++)
     {
         char start_letter = letters(rng);
-        run(file_name, start_letter, seed);
+        run(file_name, start_letter, seed + i);
     }
 
     // Timer stop
     auto stop = chrono::high_resolution_clock::now();
-    chrono::duration<double> time_elapsed = stop - start;   // secs
+    chrono::duration<double> time_elapsed = stop - start;
 
-    return time_elapsed.count();                                 // secs as double
+    return time_elapsed.count();
 }
 
 vector<list<string>> Simulator::getResults()
