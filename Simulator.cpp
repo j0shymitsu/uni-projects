@@ -4,8 +4,7 @@
 #include <random>
 using namespace std;
 
-Simulator::Simulator()
-    : rng(0), letters('a', 'z') {}
+Simulator::Simulator() = default;
 
 list<string> Simulator::run(string file_name, char start_letter, int seed)
 {
@@ -29,24 +28,21 @@ list<string> Simulator::run(string file_name, char start_letter, int seed)
         current_letter = city.back();
     }
 
-    all_results.push_back(all_cities);
-
     return all_cities;
 }
 
 double Simulator::batch(string file_name, int k, int seed)
 {
-    all_results.clear();
-    rng.seed(seed);
-    letters.param(decltype(letters)::param_type('a', 'z'));
+    mt19937 rng(seed);
+    uniform_int_distribution<int> letters('a', 'z');
 
     // Timer start
     auto start = std::chrono::high_resolution_clock::now();
 
-    for (int i = 1; i <= k; i++)
+    for (int i = 0; i < k; ++i)
     {
-        char start_letter = letters(rng);
-        run(file_name, start_letter, seed + i);
+        char start_letter = static_cast<char>(letters(rng));
+        all_results.push_back(run(file_name, start_letter, seed + i));
     }
 
     // Timer stop
