@@ -7,12 +7,12 @@ using namespace std;
 Simulator::Simulator()
     : rng(0), letters('a', 'z') {}
 
-vector<string> Simulator::run(string file_name, char start_letter, int seed)
+list<string> Simulator::run(string file_name, char start_letter, int seed)
 {
     Prototype prototype(file_name);
     prototype.seed(seed);
 
-    vector<string> all_cities;
+    list<string> all_cities;
     char current_letter = start_letter;
 
     while (true)
@@ -29,7 +29,7 @@ vector<string> Simulator::run(string file_name, char start_letter, int seed)
         current_letter = city.back();
     }
 
-    all_results.push_back(list<string>(all_cities.begin(), all_cities.end()));
+    all_results.push_back(all_cities);
 
     return all_cities;
 }
@@ -37,6 +37,7 @@ vector<string> Simulator::run(string file_name, char start_letter, int seed)
 double Simulator::batch(string file_name, int k, int seed)
 {
     rng.seed(seed);
+    letters.param(decltype(letters)::param_type('a', 'z'));
 
     // Timer start
     auto start = std::chrono::high_resolution_clock::now();
@@ -44,8 +45,7 @@ double Simulator::batch(string file_name, int k, int seed)
     for (int i = 1; i <= k; i++)
     {
         char start_letter = letters(rng);
-        int current_seed = seed + i;
-        run(file_name, start_letter, current_seed);
+        run(file_name, start_letter, seed);
     }
 
     // Timer stop
