@@ -36,6 +36,7 @@ list<string> Simulator::run(string file_name, char start_letter, int seed)
 
 double Simulator::batch(string file_name, int k, int seed)
 {
+    all_results.clear();
     rng.seed(seed);
     letters.param(decltype(letters)::param_type('a', 'z'));
 
