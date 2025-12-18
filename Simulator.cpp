@@ -39,6 +39,7 @@ double Simulator::batch(string file_name, int k, int seed)
 
     mt19937 rng(seed);
     uniform_int_distribution<int> letters('a', 'z');
+    vector<thread> threads;
 
     // Generate start letters first for reproducibility (still 'not reproducible'??)
     vector<char> start_letters(k);
@@ -46,8 +47,6 @@ double Simulator::batch(string file_name, int k, int seed)
     {
         start_letters[i] = static_cast<char>(letters(rng));
     }
-
-    vector<thread> threads;
 
     // Timer start
     auto start = std::chrono::high_resolution_clock::now();
