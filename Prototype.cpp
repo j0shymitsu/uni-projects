@@ -8,7 +8,7 @@
 using namespace std;
 
 // Init
-// Removed Clang warnings from rng on constructor as intentional behaviour
+// Removed Clang warnings from rng on constructor as this is intentional behaviour
 // NOLINTNEXTLINE
 Prototype::Prototype(const std::string& file_name) : rng(0)
 {
@@ -30,7 +30,7 @@ Prototype::Prototype(const std::string& file_name) : rng(0)
     //     all_cities.push_back(city);
     // }
 
-    // Trying while loop as index not used in previous loop
+    // Switching to while loop as index not used in previous loop
     while (getline(reader, city))
     {
         if (!city.empty())

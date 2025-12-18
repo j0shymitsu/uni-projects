@@ -5,6 +5,7 @@
 #include <list>
 #include <string>
 #include <vector>
+#include<iostream>
 #include <thread>
 #include <cstddef>
 #include <mutex>
@@ -39,37 +40,35 @@ list<string> Simulator::run(const string& file_name, char start_letter, int seed
 
 double Simulator::batch(const string& file_name, int k, int seed)
 {
-    // New approach: Store where current batch starts and make space for k new results
-    // Removed Clang warning from this index as it was showing false posititve
-    size_t starting_index = all_results.size();     // NOLINT(clang-analyzer-deadcode.DeadStores)
+    // Store where current batch starts and make space for k new results - Added NOLINT to starting_index as producing false positive on Clang
+    size_t starting_index = all_results.size();     // NOLINT
     all_results.resize(all_results.size() + k);
 
+    // Moved start letters and seeds gen outside loop for reproducibility across batches (still says no reproducibility??)
     mt19937 rng(seed);
     uniform_int_distribution<int> letters('a', 'z');
-    vector<thread> threads;
-
-    // Generate start letters first for reproducibility (still 'not reproducible'??)
     vector<char> start_letters(k);
-    for (size_t i = 0; i < k; i++)
+    for (int i = 0; i < k; i++)
     {
         start_letters[i] = static_cast<char>(letters(rng));
     }
 
     // Timer start
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = chrono::high_resolution_clock::now();
 
-    for (size_t i = 0; i < k; i++)
+    // Implement multithreading
+    vector<thread> threads;
+    for (int i = 0; i < k; i++)
     {
-        // Implements multithreading
-        threads.push_back(thread([this, file_name, start_letters, seed, i, starting_index]()
+        threads.push_back(thread([this, file_name, starting_index, i, start_letter = start_letters[i], sim_seed = seed + i]()
         {
-            auto result = run(file_name, start_letters[i], seed + static_cast<int>(i));
-            unique_lock<mutex> lock(all_results_mutex);
-            all_results[starting_index + i] = result;       // Now writes to correct position
+            auto result = run(file_name, start_letter, sim_seed);
+            lock_guard<mutex> lock(all_results_mutex);
+            all_results[starting_index + i] = result;
         }));
     }
 
-    // Join threads together
+    // Wait to complete then join
     for (auto& thread : threads)
     {
         thread.join();

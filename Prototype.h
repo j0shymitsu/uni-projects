@@ -24,7 +24,7 @@ class Prototype
         void restart();
         void seed(int value);
     protected:
-        // Removed Clang warnings for these as intentional behaviour/false positive
+        // Removed Clang warnings for these as they are intentional behaviour and flagging false positive
         std::vector<std::string> all_cities;            // NOLINT
         std::vector<std::string> used_cities;           // NOLINT
         std::mt19937 rng;                               // NOLINT
