@@ -5,6 +5,7 @@
 #include <vector>
 #include <cstddef>      // Header for size_t
 #include <random>
+#include <unordered_set>
 using namespace std;
 
 // Init
@@ -59,17 +60,12 @@ string Prototype::getCity(char start_letter)
         }
     }
 
-    // Remove used cities from list
-    for (size_t i = 0; i < valid_cities.size(); i++)
+    // Remove used cities from list - Now O(n) utilising new hashmap
+    for (size_t i = valid_cities.size(); i-- > 0;)
     {
-        for (size_t j = 0; j < used_cities.size(); j++)
+        if (used_cities.contains(valid_cities[i]))
         {
-            if (valid_cities[i] == used_cities[j])
-            {
-                valid_cities.erase(valid_cities.begin() + static_cast<int>(i));
-                --i;
-                break;
-            }
+            valid_cities.erase(valid_cities.begin() + static_cast<size_t>(i));
         }
     }
 
@@ -88,12 +84,9 @@ string Prototype::getCity(char start_letter)
 // Check if given city is valid and unused
 bool Prototype::checkCity(const std::string& city)
 {
-    for (size_t i = 0; i < used_cities.size(); i++)
+    if (used_cities.contains(city))
     {
-        if (city == used_cities[i])
-        {
-            return false;
-        }
+        return false;
     }
 
     for (size_t i = 0; i < all_cities.size(); i++)
@@ -112,14 +105,14 @@ void Prototype::markUsed(const std::string& city)
 {
     if (checkCity(city))
     {
-        used_cities.push_back(city);
+        used_cities.insert(city);   // now O(1)
     }
 }
 
 // Mark all cities unused
 void Prototype::restart()
 {
-    used_cities = vector<string>();
+    used_cities.clear();
 }
 
 // Seeding method

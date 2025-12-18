@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <random>
+#include <unordered_set>
 #define ASSIGNMENT_2		//Uncomment to switch to feedback mode for assignment 2
 
 /*
@@ -26,9 +27,9 @@ class Prototype
     protected:
         // Accessors return const references to prevent copying
         const std::vector<std::string>& getAllCities() const { return all_cities; }
-        const std::vector<std::string>& getUsedCities() const { return used_cities; }
+        const std::unordered_set<std::string>& getUsedCities() const { return used_cities; }
         std::mt19937 rng;   // Subclasses can share seed
     private:
         std::vector<std::string> all_cities;
-        std::vector<std::string> used_cities;
+        std::unordered_set<std::string> used_cities;    // Changed to hashmap for faster lookup
 };
