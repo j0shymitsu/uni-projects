@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <thread>
+#include <mutex>
 
 class Simulator
 {
@@ -13,5 +15,5 @@ class Simulator
         std::vector<std::list<std::string>> getResults();
     private:
         std::vector<std::list<std::string>> all_results;
-
+        std::mutex all_results_mutex;
 };

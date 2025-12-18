@@ -26,6 +26,7 @@ Prototype::Prototype(std::string file_name)
     //     all_cities.push_back(city);
     // }
 
+    // trying while loop as index not used in previous loop
     while (getline(reader, city))
     {
         if (!city.empty())

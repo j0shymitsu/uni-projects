@@ -35,6 +35,7 @@ double Simulator::batch(string file_name, int k, int seed)
 {
     mt19937 rng(seed);
     uniform_int_distribution<int> letters('a', 'z');
+    vector<thread> threads;
 
     // Timer start
     auto start = std::chrono::high_resolution_clock::now();
@@ -42,7 +43,20 @@ double Simulator::batch(string file_name, int k, int seed)
     for (int i = 0; i < k; ++i)
     {
         char start_letter = static_cast<char>(letters(rng));
-        all_results.push_back(run(file_name, start_letter, seed + i));
+
+        // Implement multithreading
+        threads.push_back(thread([this, file_name, start_letter, seed, i]()
+        {
+            auto result = run(file_name, start_letter, seed + i);
+            unique_lock<mutex> lock(all_results_mutex);
+            all_results.push_back(result);
+        }));
+    }
+
+    // Join threads together
+    for (auto& thread : threads)
+    {
+        thread.join();
     }
 
     // Timer stop
