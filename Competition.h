@@ -6,7 +6,7 @@
 class Competition : public Prototype
 {
     public:
-        explicit Competition(std::string file_name) : Prototype(file_name) {}
+        explicit Competition(const std::string& file_name) : Prototype(file_name) {}
         Competition() : Prototype("Cities.txt") {}
         std::string getCity(char start_letter) override;
     private:
