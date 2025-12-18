@@ -22,7 +22,7 @@ class Prototype
         void markUsed(std::string city);
         void restart();
         void seed(int value);
-    private:
+    protected:
         std::vector<std::string> all_cities;
         std::vector<std::string> used_cities;
         std::mt19937 rng;
