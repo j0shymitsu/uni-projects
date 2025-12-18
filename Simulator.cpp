@@ -43,7 +43,7 @@ double Simulator::batch(const string& file_name, int k, int seed)
 
     // Generate start letters first for reproducibility (still 'not reproducible'??)
     vector<char> start_letters(k);
-    for (int i = 0; i < k; i++)
+    for (size_t i = 0; i < k; i++)
     {
         start_letters[i] = static_cast<char>(letters(rng));
     }
@@ -51,7 +51,7 @@ double Simulator::batch(const string& file_name, int k, int seed)
     // Timer start
     auto start = std::chrono::high_resolution_clock::now();
 
-    for (int i = 0; i < k; i++)
+    for (size_t i = 0; i < k; i++)
     {
         // Implements multithreading
         threads.push_back(thread([this, file_name, start_letters, seed, i, starting_index]()

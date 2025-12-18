@@ -44,7 +44,7 @@ string Prototype::getCity(char start_letter)
     vector<string> valid_cities = {};
 
     // Populate valid cities by starting letter
-    for (int i = 0; i < all_cities.size(); i++)
+    for (size_t i = 0; i < all_cities.size(); i++)
     {
         string current_city = all_cities[i];
         char current_char = current_city[0];
@@ -56,9 +56,9 @@ string Prototype::getCity(char start_letter)
     }
 
     // Remove used cities from list
-    for (int i = 0; i < valid_cities.size(); i++)
+    for (size_t i = 0; i < valid_cities.size(); i++)
     {
-        for (int j = 0; j < used_cities.size(); j++)
+        for (size_t j = 0; j < used_cities.size(); j++)
         {
             if (valid_cities[i] == used_cities[j])
             {
@@ -84,7 +84,7 @@ string Prototype::getCity(char start_letter)
 // Check if given city is valid and unused
 bool Prototype::checkCity(const std::string& city)
 {
-    for (int i = 0; i < used_cities.size(); i++)
+    for (size_t i = 0; i < used_cities.size(); i++)
     {
         if (city == used_cities[i])
         {
@@ -92,7 +92,7 @@ bool Prototype::checkCity(const std::string& city)
         }
     }
 
-    for (int i = 0; i < all_cities.size(); i++)
+    for (size_t i = 0; i < all_cities.size(); i++)
     {
         if (city == all_cities[i])
         {
