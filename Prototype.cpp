@@ -65,7 +65,7 @@ string Prototype::getCity(char start_letter)
     {
         if (used_cities.contains(valid_cities[i]))
         {
-            valid_cities.erase(valid_cities.begin() + static_cast<size_t>(i));
+            valid_cities.erase(valid_cities.begin() + i);
         }
     }
 

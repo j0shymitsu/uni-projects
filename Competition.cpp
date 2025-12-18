@@ -4,14 +4,16 @@
 #include <vector>
 using namespace std;
 
-int Competition::countRemainingCities(char letter)
+// Counts unused cities starting with a given letter
+int Competition::countCitiesStartingWith(char letter)
 {
     int count = 0;
     const auto& cities = getAllCities();
+    const auto& used = getUsedCities();
 
-    for (size_t i = 0; i < cities.size(); ++i)
+    for (size_t i = 0; i < cities.size(); i++)
     {
-        if (cities[i][0] == letter && checkCity(cities[i]))
+        if (cities[i][0] == letter && used.contains(cities[i]) == 0)
         {
             count++;
         }
@@ -19,6 +21,7 @@ int Competition::countRemainingCities(char letter)
 
     return count;
 }
+
 
 string Competition::getCity(char start_letter)
 {
@@ -39,22 +42,25 @@ string Competition::getCity(char start_letter)
         return "";
     }
 
-    // Find the city whose last letter gives the least options
+    // Find the city whose last letter gives opponent the fewest options for better chance of player win
     string best_city = valid_cities.front();
-    int options = countRemainingCities(valid_cities[0].back());
+    int best_opponent_options = countCitiesStartingWith(valid_cities[0].back());
 
     for (size_t i = 1; i < valid_cities.size(); i++)
     {
         char last_letter = valid_cities[i].back();
-        int remaining_options = countRemainingCities(last_letter);
+        int opponent_options = countCitiesStartingWith(last_letter);
 
-        if (remaining_options < options)
+        if (opponent_options < best_opponent_options)
         {
-            options = remaining_options;
+            best_opponent_options = opponent_options;
             best_city = valid_cities[i];
         }
     }
 
     return best_city;
 }
+
+
+
 

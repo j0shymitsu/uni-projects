@@ -10,5 +10,5 @@ class Competition : public Prototype
         Competition() : Prototype("Cities.txt") {}
         std::string getCity(char start_letter) override;
     private:
-        int countRemainingCities(char letter);
+        int countCitiesStartingWith(char letter);
 };
