@@ -23,6 +23,7 @@ class Prototype
         void restart();
         void seed(int value);
     protected:
+        // NOLINT(cppcoreguidelines-non-private-member-variables-in-classes)
         std::vector<std::string> all_cities;
         std::vector<std::string> used_cities;
         std::mt19937 rng;
