@@ -49,15 +49,17 @@ string Prototype::getCity(char start_letter)
     vector<string> valid_cities = {};
 
     // Populate valid cities by starting letter
-    for (size_t i = 0; i < all_cities.size(); i++)
+    for (const auto& city : all_cities)
     {
-        string current_city = all_cities[i];
-        char current_char = current_city[0];
-
-        if (current_char == start_letter)
+        if (city[0] == start_letter && !used_cities.contains(city))
         {
-            valid_cities.push_back(current_city);
+            valid_cities.push_back(city);
         }
+    }
+
+    if (valid_cities.empty())
+    {
+        return "";
     }
 
     // Remove used cities from list - Now O(n) utilising new hashmap
@@ -67,11 +69,6 @@ string Prototype::getCity(char start_letter)
         {
             valid_cities.erase(valid_cities.begin() + i);
         }
-    }
-
-    if (valid_cities.empty())
-    {
-        return "";
     }
 
     // Return random city from valid cities: Updated using new seed method and uniform distribution
