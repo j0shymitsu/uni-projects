@@ -64,7 +64,7 @@ string Prototype::getCity(char start_letter)
         {
             if (valid_cities[i] == used_cities[j])
             {
-                valid_cities.erase(valid_cities.begin() + i);
+                valid_cities.erase(valid_cities.begin() + static_cast<int>(i));
                 --i;
                 break;
             }
@@ -77,7 +77,7 @@ string Prototype::getCity(char start_letter)
     }
 
     // Return random city from valid cities: Updated using new seed method and uniform distribution
-    uniform_int_distribution<int> dist(0, valid_cities.size() - 1);
+    uniform_int_distribution<int> dist(0, static_cast<int>(valid_cities.size()) - 1);
     int index = dist(rng);
 
     return valid_cities[index];

@@ -40,7 +40,7 @@ list<string> Simulator::run(const string& file_name, char start_letter, int seed
 double Simulator::batch(const string& file_name, int k, int seed)
 {
     // New approach: Store where current batch starts and make space for k new results
-    int starting_index = all_results.size();
+    size_t starting_index = all_results.size();
     all_results.resize(all_results.size() + k);
 
     mt19937 rng(seed);
@@ -62,7 +62,7 @@ double Simulator::batch(const string& file_name, int k, int seed)
         // Implements multithreading
         threads.push_back(thread([this, file_name, start_letters, seed, i, starting_index]()
         {
-            auto result = run(file_name, start_letters[i], seed + i);
+            auto result = run(file_name, start_letters[i], seed + static_cast<int>(i));
             unique_lock<mutex> lock(all_results_mutex);
             all_results[starting_index + i] = result;       // Now writes to correct position
         }));
