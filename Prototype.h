@@ -17,7 +17,7 @@ class Prototype
 {
     public:
         explicit Prototype(std::string file_name);
-        std::string getCity(char start_letter);
+        virtual std::string getCity(char start_letter);
         bool checkCity(std::string city);          // Checks if valid
         void markUsed(std::string city);
         void restart();
