@@ -2,6 +2,12 @@
 #include "Prototype.h"
 #include <chrono>
 #include <random>
+#include <list>
+#include <string>
+#include <vector>
+#include <thread>
+#include <cstddef>
+#include <mutex>
 using namespace std;
 
 Simulator::Simulator() = default;

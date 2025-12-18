@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <cstddef>      // Header for size_t
+#include <random>
 using namespace std;
 
 // Init

@@ -1,5 +1,7 @@
 #include "Competition.h"
-#include <algorithm>
+#include <cstddef>
+#include <string>
+#include <vector>
 using namespace std;
 
 int Competition::countRemainingCities(char letter)
@@ -30,7 +32,7 @@ string Competition::getCity(char start_letter)
         }
     }
 
-    if (valid_cities.size() == 0)
+    if (valid_cities.empty())
     {
         return "";
     }
