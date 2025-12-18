@@ -2,9 +2,6 @@
 //Run the code under the 'Sketchbook' configuration
 //This should be most useful when approaching assignment 2
 //The code in this file will not be assessed
-#include "Prototype.h"
-#include "Simulator.h"
-#include "Competition.h"
 #include <iostream>
 
 
