@@ -30,7 +30,7 @@ Prototype::Prototype(const std::string& file_name) : rng(0)
     //     all_cities.push_back(city);
     // }
 
-    // Switching to while loop as index not used in previous loop
+    // Switching to while loop as index not used
     while (getline(reader, city))
     {
         if (!city.empty())

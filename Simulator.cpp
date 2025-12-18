@@ -39,8 +39,8 @@ list<string> Simulator::run(const string& file_name, char start_letter, int seed
 
 double Simulator::batch(const string& file_name, int k, int seed)
 {
-    // Store where current batch starts and make space for k new results - Added NOLINT to starting_index as producing false positive on Clang
-    size_t starting_index = all_results.size();     // NOLINT
+    // Store where current batch starts and make space for k new results
+    size_t starting_index = all_results.size();
     all_results.resize(all_results.size() + k);
 
     // Moved start letters and seeds gen outside loop for reproducibility across batches (still says no reproducibility??)

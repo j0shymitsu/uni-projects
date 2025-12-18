@@ -7,10 +7,11 @@ using namespace std;
 int Competition::countRemainingCities(char letter)
 {
     int count = 0;
+    const auto& cities = getAllCities();
 
-    for (size_t i = 0; i < all_cities.size(); ++i)
+    for (size_t i = 0; i < cities.size(); ++i)
     {
-        if (all_cities[i][0] == letter && checkCity(all_cities[i]))
+        if (cities[i][0] == letter && checkCity(cities[i]))
         {
             count++;
         }
@@ -23,12 +24,13 @@ string Competition::getCity(char start_letter)
 {
     // Get all valid cities with the required letter
     vector<string> valid_cities;
+    const auto& cities = getAllCities();
 
-    for (size_t i = 0; i < all_cities.size(); i++)
+    for (size_t i = 0; i < cities.size(); i++)
     {
-        if (all_cities[i][0] == start_letter && checkCity(all_cities[i]))
+        if (cities[i][0] == start_letter && checkCity(cities[i]))
         {
-            valid_cities.push_back(all_cities[i]);
+            valid_cities.push_back(cities[i]);
         }
     }
 

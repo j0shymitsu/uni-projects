@@ -24,8 +24,11 @@ class Prototype
         void restart();
         void seed(int value);
     protected:
-        // Removed Clang warnings for these as they are intentional behaviour and flagging false positive
-        std::vector<std::string> all_cities;            // NOLINT
-        std::vector<std::string> used_cities;           // NOLINT
-        std::mt19937 rng;                               // NOLINT
+        // Accessors return const references to prevent copying
+        const std::vector<std::string>& getAllCities() const { return all_cities; }
+        const std::vector<std::string>& getUsedCities() const { return used_cities; }
+        std::mt19937 rng;   // Subclasses can share seed
+    private:
+        std::vector<std::string> all_cities;
+        std::vector<std::string> used_cities;
 };
