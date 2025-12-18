@@ -25,7 +25,7 @@ class Prototype
         void restart();
         void seed(int value);
     protected:
-        // Accessors return const references to prevent copying
+        // Made accessors return const references to prevent copying for better efficiency
         const std::vector<std::string>& getAllCities() const { return all_cities; }
         const std::unordered_set<std::string>& getUsedCities() const { return used_cities; }
         std::mt19937 rng;   // Subclasses can share seed

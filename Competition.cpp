@@ -13,7 +13,7 @@ int Competition::countCitiesStartingWith(char letter)
 
     for (size_t i = 0; i < cities.size(); i++)
     {
-        if (cities[i][0] == letter && used.contains(cities[i]) == 0)
+        if (cities[i][0] == letter && !used.contains(cities[i]))
         {
             count++;
         }
