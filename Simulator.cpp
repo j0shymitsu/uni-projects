@@ -33,6 +33,10 @@ list<string> Simulator::run(string file_name, char start_letter, int seed)
 
 double Simulator::batch(string file_name, int k, int seed)
 {
+    // Clear results every batch for reproducibility; add current batch vector
+    all_results.clear();
+    vector<list<string>> current_batch(k);
+
     mt19937 rng(seed);
     uniform_int_distribution<int> letters('a', 'z');
     vector<thread> threads;
@@ -45,11 +49,11 @@ double Simulator::batch(string file_name, int k, int seed)
         char start_letter = static_cast<char>(letters(rng));
 
         // Implement multithreading
-        threads.push_back(thread([this, file_name, start_letter, seed, i]()
+        threads.push_back(thread([this, &current_batch, file_name, start_letter, seed, i]()
         {
             auto result = run(file_name, start_letter, seed + i);
             unique_lock<mutex> lock(all_results_mutex);
-            all_results.push_back(result);
+            current_batch[i] = result;
         }));
     }
 
@@ -58,6 +62,9 @@ double Simulator::batch(string file_name, int k, int seed)
     {
         thread.join();
     }
+
+    // Copy back to all_results once threads finished
+    all_results = current_batch;
 
     // Timer stop
     auto stop = chrono::high_resolution_clock::now();
