@@ -40,7 +40,8 @@ list<string> Simulator::run(const string& file_name, char start_letter, int seed
 double Simulator::batch(const string& file_name, int k, int seed)
 {
     // New approach: Store where current batch starts and make space for k new results
-    size_t starting_index = all_results.size();
+    // Removed Clang warning from this index as it was showing false posititve
+    size_t starting_index = all_results.size();     // NOLINT(clang-analyzer-deadcode.DeadStores)
     all_results.resize(all_results.size() + k);
 
     mt19937 rng(seed);

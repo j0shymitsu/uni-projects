@@ -8,7 +8,7 @@
 using namespace std;
 
 // Init
-Prototype::Prototype(const std::string& file_name)
+Prototype::Prototype(const std::string& file_name) : rng(0)
 {
     ifstream reader(file_name);
 
@@ -28,7 +28,7 @@ Prototype::Prototype(const std::string& file_name)
     //     all_cities.push_back(city);
     // }
 
-    // trying while loop as index not used in previous loop
+    // Trying while loop as index not used in previous loop
     while (getline(reader, city))
     {
         if (!city.empty())

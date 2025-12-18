@@ -17,13 +17,15 @@ class Prototype
 {
     public:
         explicit Prototype(const std::string& file_name);
+        virtual ~Prototype() = default;
         virtual std::string getCity(char start_letter);
-        bool checkCity(const std::string& city);          // Checks if valid
+        bool checkCity(const std::string& city);            // Checks if valid
         void markUsed(const std::string& city);
         void restart();
         void seed(int value);
     protected:
         // NOLINT(cppcoreguidelines-non-private-member-variables-in-classes)
+        // Intentional
         std::vector<std::string> all_cities;
         std::vector<std::string> used_cities;
         std::mt19937 rng;
