@@ -37,9 +37,6 @@ string Competition::getCity(char start_letter)
         return "";
     }
 
-    // Local scoring system
-    int best_score = -999;
-
     // Find the city whose last letter gives the least options
     string best_city = valid_cities.front();
     int options = countRemainingCities(valid_cities[0].back());
