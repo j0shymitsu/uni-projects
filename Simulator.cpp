@@ -6,7 +6,7 @@ using namespace std;
 
 Simulator::Simulator() = default;
 
-list<string> Simulator::run(string file_name, char start_letter, int seed)
+list<string> Simulator::run(const string& file_name, char start_letter, int seed)
 {
     Prototype prototype(file_name);
     prototype.seed(seed);
@@ -31,7 +31,7 @@ list<string> Simulator::run(string file_name, char start_letter, int seed)
     return all_cities;
 }
 
-double Simulator::batch(string file_name, int k, int seed)
+double Simulator::batch(const string& file_name, int k, int seed)
 {
     // New approach: Store where current batch starts and make space for k new results
     int starting_index = all_results.size();

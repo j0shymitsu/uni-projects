@@ -6,7 +6,7 @@
 using namespace std;
 
 // Init
-Prototype::Prototype(std::string file_name)
+Prototype::Prototype(const std::string& file_name)
 {
     ifstream reader(file_name);
 
@@ -82,7 +82,7 @@ string Prototype::getCity(char start_letter)
 }
 
 // Check if given city is valid and unused
-bool Prototype::checkCity(std::string city)
+bool Prototype::checkCity(const std::string& city)
 {
     for (int i = 0; i < used_cities.size(); i++)
     {
@@ -104,7 +104,7 @@ bool Prototype::checkCity(std::string city)
 }
 
 // Mark given city as used
-void Prototype::markUsed(std::string city)
+void Prototype::markUsed(const std::string& city)
 {
     if (checkCity(city))
     {

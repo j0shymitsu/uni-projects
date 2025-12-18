@@ -16,10 +16,10 @@
 class Prototype
 {
     public:
-        explicit Prototype(std::string file_name);
+        explicit Prototype(const std::string& file_name);
         virtual std::string getCity(char start_letter);
-        bool checkCity(std::string city);          // Checks if valid
-        void markUsed(std::string city);
+        bool checkCity(const std::string& city);          // Checks if valid
+        void markUsed(const std::string& city);
         void restart();
         void seed(int value);
     protected:
