@@ -24,9 +24,8 @@ class Prototype
         void restart();
         void seed(int value);
     protected:
-        // NOLINT(cppcoreguidelines-non-private-member-variables-in-classes)
-        // Intentional
-        std::vector<std::string> all_cities;
-        std::vector<std::string> used_cities;
-        std::mt19937 rng;
+        // Removed Clang warnings for these as intentional behaviour/false positive
+        std::vector<std::string> all_cities;            // NOLINT
+        std::vector<std::string> used_cities;           // NOLINT
+        std::mt19937 rng;                               // NOLINT
 };

@@ -8,6 +8,8 @@
 using namespace std;
 
 // Init
+// Removed Clang warnings from rng on constructor as intentional behaviour
+// NOLINTNEXTLINE
 Prototype::Prototype(const std::string& file_name) : rng(0)
 {
     ifstream reader(file_name);
