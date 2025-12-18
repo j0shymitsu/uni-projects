@@ -8,5 +8,7 @@ class Competition : public Prototype
     public:
         explicit Competition(std::string file_name) : Prototype(file_name) {}
         Competition() : Prototype("Cities.txt") {}
-        // std::string getCity(char start_letter) override { return Prototype::getCity(start_letter); };
+        std::string getCity(char start_letter) override;
+    private:
+        int countRemainingCities(char letter);
 };
