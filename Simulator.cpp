@@ -37,10 +37,12 @@ list<string> Simulator::run(const string& file_name, char start_letter, int seed
     return all_cities;
 }
 
+// Method complexity/size is necessary after adding thread management so added a NOLINT
+// NOLINTNEXTLINE
 double Simulator::batch(const string& file_name, int k, int seed)
 {
     // Store where current batch starts and make space for k new results
-    size_t starting_index = all_results.size();
+    size_t starting_index = all_results.size();     // Clion is suggesting this value is never used (incorrectly)
     all_results.resize(all_results.size() + k);
 
     // Moved start letters and seeds gen outside loop for reproducibility across batches (still says no reproducibility??)
@@ -49,21 +51,25 @@ double Simulator::batch(const string& file_name, int k, int seed)
     vector<char> start_letters(k);
     for (int i = 0; i < k; i++)
     {
-        start_letters[i] = static_cast<char>(letters(rng));
+        start_letters[i] = static_cast<char>(letters(rng));     // Populate
     }
 
     // Timer start
     auto start = chrono::high_resolution_clock::now();
 
-    // Implement multithreading
+    // Implements multithreading
     vector<thread> threads;
     for (int i = 0; i < k; i++)
     {
-        threads.push_back(thread([this, file_name, starting_index, i, start_letter = start_letters[i], sim_seed = seed + i]()
+        char start_letter = start_letters[i];
+        int sim_seed = seed + i;                    // Again Clion suggesting these values are never used incorrectly
+        int result_index = starting_index + i;
+
+        threads.push_back(thread([this, file_name, start_letter, sim_seed, result_index]()
         {
             auto result = run(file_name, start_letter, sim_seed);
             lock_guard<mutex> lock(all_results_mutex);
-            all_results[starting_index + i] = result;
+            all_results[result_index] = result;
         }));
     }
 

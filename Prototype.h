@@ -8,7 +8,7 @@
 /*
     O notation: fill in your time complexities here
         -	Constructor:    O(n)
-        -	getCity:		O(n^2) (worst case)
+        -	getCity:		O(n) - improved
         -	checkCity:      O(n)
         -	markUsed		O(n)
         -	restart			O(n)
@@ -28,8 +28,8 @@ class Prototype
         // Made accessors return const references to prevent copying for better efficiency
         const std::vector<std::string>& getAllCities() const { return all_cities; }
         const std::unordered_set<std::string>& getUsedCities() const { return used_cities; }
-        std::mt19937 rng;   // Subclasses can share seed
     private:
         std::vector<std::string> all_cities;
         std::unordered_set<std::string> used_cities;    // Changed to hashmap for faster lookup
+        std::mt19937 rng;
 };

@@ -9,9 +9,7 @@
 using namespace std;
 
 // Init
-// Removed Clang warnings from rng on constructor as this is intentional behaviour
-// NOLINTNEXTLINE
-Prototype::Prototype(const std::string& file_name) : rng(0)
+Prototype::Prototype(const std::string& file_name)
 {
     ifstream reader(file_name);
 
@@ -31,7 +29,7 @@ Prototype::Prototype(const std::string& file_name) : rng(0)
     //     all_cities.push_back(city);
     // }
 
-    // Switching to while loop as index not used
+    // Switching to while loop as index not used previously
     while (getline(reader, city))
     {
         if (!city.empty())
@@ -60,15 +58,6 @@ string Prototype::getCity(char start_letter)
     if (valid_cities.empty())
     {
         return "";
-    }
-
-    // Remove used cities from list - Now O(n) utilising new hashmap
-    for (size_t i = valid_cities.size(); i-- > 0;)
-    {
-        if (used_cities.contains(valid_cities[i]))
-        {
-            valid_cities.erase(valid_cities.begin() + i);
-        }
     }
 
     // Return random city from valid cities: Updated using new seed method and uniform distribution
@@ -100,7 +89,7 @@ bool Prototype::checkCity(const std::string& city)
 // Mark given city as used
 void Prototype::markUsed(const std::string& city)
 {
-    if (checkCity(city))
+    if (checkCity(city))            // still O(n)
     {
         used_cities.insert(city);   // now O(1)
     }
